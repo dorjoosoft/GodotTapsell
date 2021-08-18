@@ -14,7 +14,7 @@ This plugin uses <a href="https://docs.tapsell.ir/tapsell-sdk/android/initialize
 <img src="https://github.com/dorjoosoft/GodotCafebazaar/blob/main/docs/tempsnip.png" alt="Enable plugin"/>
 
 <p>From "Project>Project settings" dialog do steps 1 and 2 as you see in below image: </p>
-<img src="https://github.com/dorjoosoft/GodotCafebazaar/blob/main/docs/key.png" alt="Enable plugin"/>
+<img src="https://github.com/dorjoosoft/GodotTapsell/blob/main/docs/Screenshot%20from%202021-08-19%2000-10-55.png" alt="Enable plugin"/>
 
 <p>In <strong>[your_project_path]/android/build/config.gradle </strong>file change kotlin version to <strong>kotlinVersion : &#39;1.4.0&#39; .</strong></p>
 
