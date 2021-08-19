@@ -55,4 +55,52 @@ func on_rewarded_done(result):
 #runs if no video available that is reported from tapsell
 func on_no_ad_available():
 	# run your decision if no video available from tapsell</code></pre>
+	
+
+<p><span style="font-size:20px"><strong>1- How to implement &quot;native banner&quot;:</strong></span></p>
+
+<pre>
+<code class="language-python">
+#connecting events
+func request_ad(zoneId):
+	if Engine.has_singleton(Tapsell.tapsell_plugin_name):
+        #connect to banner load event
+		Tapsell.tapsellPlugin.connect("native_ad_filled", self, "native_ad_filled")
+        #call for a native banner from tapsell
+		Tapsell.tapsellPlugin.getNativeAdd(zoneId)
+
+
+# calls when your native banner is available
+func native_ad_filled(adParams):
+	adFilled = adParams	
+    #adParams filles with parts of your native banner.
+    adParams["iconUrl"],           #iconUrl of native banner
+    adParams["callToActionText"]   #call to action text
+	adParams["landscapeImageUrl"], #url of landscape image of banner
+    adParams["description"],       #description of native banner
+    adParams["zoneId"],
+    adParams["adId"]
+
+
+#you can use this function for loading images of native banner from tapsell
+func load_image(imgUrl):
+	var http_error = $HTTPRequest.request(str(imgUrl))
+
+#runs after image is loaded
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	var image = Image.new()
+	print_debug("response_code", body)
+	var image_error = image.load_jpg_from_buffer(body)
+	if image_error != OK:
+		image_error = image.load_png_from_buffer(body)
+		if image_error != OK:
+			print(image_error)
+	var texture = ImageTexture.new()
+	texture.create_from_image(image, 4)
+	# Assign to the child TextureRect node to display image
+	$TexImage.texture = texture
+	
+
+
+</code></pre>
 
