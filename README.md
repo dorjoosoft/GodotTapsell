@@ -26,3 +26,26 @@ This plugin uses <a href="https://docs.tapsell.ir/tapsell-sdk/android/initialize
 Download&nbsp;<a href="https://github.com/dorjoosoft/GodotTapsell/blob/main/common/tapsell.gd">tapsell.gd</a>&nbsp;&nbsp;file and add it to your games common folder and add it to your Autoload.</p>
 <img src="https://github.com/dorjoosoft/GodotTapsell/blob/main/docs/Screenshot%20from%202021-08-18%2021-48-28.png" alt="Enable plugin"/>
  
+<p><span style="font-size:20px"><strong>1- How to implement &quot;Reward Video&quot;:</strong></span></p>
+
+<pre>
+<code class="language-python">
+#connecting events
+func _ready():
+	if Engine.has_singleton(Tapsell.tapsell_plugin_name):
+		Tapsell.tapsellPlugin.connect("on_rewarded_done", self, "on_rewarded_done")
+		Tapsell.tapsellPlugin.connect("on_no_network", self, "on_no_network")
+		Tapsell.tapsellPlugin.connect("on_no_ad_available", self, "on_no_ad_available")
+		Tapsell.tapsellPlugin.connect("on_error", self, "on_error")
+
+
+#request a reward video 
+func on_checknet_success():
+    #call this method with your ad zone_id
+	Tapsell.tapsellPlugin.requestAd("5sdf15s551f5a15sdf4465") 
+
+
+#runs after your reward video finished successful
+func on_rewarded_done(result):
+	if str(result) == "true":
+		#give the reward to user</code></pre>
