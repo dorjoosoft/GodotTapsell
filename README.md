@@ -1,6 +1,7 @@
 <p><strong><span style="font-size:18px">GodotTapsell</span>:</strong></p>
 <p> Godot Tapsell plugin implemented based on <span style="font-size:16px"><strong>Godot 3.2.2+</strong></span> android plugin standards.<br />
 This plugin uses <a href="https://docs.tapsell.ir/tapsell-sdk/android/initialize/">Tapsell sdk</a>.</p>
+<p><span style="font-size:18px"><strong>Tapsell &quot;reward video&quot; and &quot;native banner&quot; are supported in godotTapsell plugin.</strong></span></p>
 
 <p><strong><span style="font-size:18px">prerequisite</span>:</strong></p>
 
@@ -48,4 +49,10 @@ func on_checknet_success():
 #runs after your reward video finished successful
 func on_rewarded_done(result):
 	if str(result) == "true":
-		#give the reward to user</code></pre>
+		#give the reward to user
+
+
+#runs if no video available that is reported from tapsell
+func on_no_ad_available():
+	# run your decision if no video available from tapsell</code></pre>
+
